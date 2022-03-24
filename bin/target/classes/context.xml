@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Please do NOT change this file! --> 
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+         http://www.springframework.org/schema/context 
+         http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	     http://www.springframework.org/schema/aop 
+	     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	   ">
+
+    <!-- activate annotations in registered beans -->
+    <context:annotation-config />   
+
+    <!-- Enable Spring AOP with AspectJ -->
+    <aop:aspectj-autoproxy />
+
+    
+    <bean id="tweetService" class="edu.sjsu.cmpe275.aop.tweet.TweetServiceImpl" scope="singleton"/>
+    <bean id="tweetStatsService" class="edu.sjsu.cmpe275.aop.tweet.TweetStatsServiceImpl" scope="singleton"/>
+
+    <bean name="accessControlAspect" class="edu.sjsu.cmpe275.aop.tweet.aspect.AccessControlAspect" scope="singleton"/>
+    <bean name="validationAspect" class="edu.sjsu.cmpe275.aop.tweet.aspect.ValidationAspect" scope="singleton"/>
+    <bean name="retryAspect" class="edu.sjsu.cmpe275.aop.tweet.aspect.RetryAspect" scope="singleton"/>
+    <bean name="statsAspect" class="edu.sjsu.cmpe275.aop.tweet.aspect.StatsAspect" scope="singleton"/>
+</beans>
